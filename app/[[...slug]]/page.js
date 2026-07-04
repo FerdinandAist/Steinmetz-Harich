@@ -1,97 +1,48 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import { notFound } from 'next/navigation';
+import { PageRenderer } from '../site-components';
+import { baseUrl, breadcrumbSchema, faqSchema, localBusinessSchema, routePath, routes } from '../site-data';
 
-const ROOT = process.cwd();
-
-function pageFileFromSlug(slug = []) {
-  if (!slug.length) return path.join(ROOT, 'index.html');
-  return path.join(ROOT, ...slug, 'index.html');
-}
-
-function readPage(slug = []) {
-  const file = pageFileFromSlug(slug);
-  if (!fs.existsSync(file)) return null;
-  return fs.readFileSync(file, 'utf8');
-}
-
-function extractBody(html) {
-  const body = /<body[^>]*>([\s\S]*?)<\/body>/i.exec(html)?.[1] || html;
-  return body.replace(/<script[\s\S]*?<\/script>/gi, '');
-}
-
-function extractMeta(html, name) {
-  return new RegExp('<meta name="' + name + '" content="([^"]*)"', 'i').exec(html)?.[1] || '';
-}
-
-function extractJsonLd(html) {
-  const scripts = [];
-  const pattern = /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
-  let match;
-  while ((match = pattern.exec(html)) !== null) {
-    const json = match[1].trim();
-    if (json) scripts.push(json);
-  }
-  return scripts;
-}
-
-function titleOf(html) {
-  return /<title>([^<]*)<\/title>/i.exec(html)?.[1] || 'Steinmetzwerkstatt Harich';
-}
-
-function discoverPages() {
-  const pages = [[]];
-  function walk(dir, parts = []) {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      if (!entry.isDirectory()) continue;
-      if (['.git', '.next', 'node_modules', 'app', 'assets', 'public', 'tmp', 'nicht in github laden'].includes(entry.name)) continue;
-      const nextParts = [...parts, entry.name];
-      const indexFile = path.join(dir, entry.name, 'index.html');
-      if (fs.existsSync(indexFile)) pages.push(nextParts);
-      walk(path.join(dir, entry.name), nextParts);
-    }
-  }
-  walk(ROOT);
-  return pages;
+function normalize(slug = []) {
+  return slug.join('/').replace(/^\/+|\/+$/g, '');
 }
 
 export function generateStaticParams() {
-  return discoverPages().map((slug) => ({ slug }));
+  return Object.keys(routes).map((route) => ({ slug: route ? route.split('/') : [] }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug = [] } = await params;
-  const html = readPage(slug);
-  if (!html) return {};
-  const description = extractMeta(html, 'description');
+  const route = normalize(slug);
+  const page = routes[route];
+  if (!page) return {};
+  const url = baseUrl + routePath(route);
   return {
-    title: titleOf(html),
-    description,
-    alternates: { canonical: '/' + slug.join('/') + (slug.length ? '/' : '') },
+    title: page.title,
+    description: page.description,
+    alternates: { canonical: routePath(route) },
     openGraph: {
-      title: titleOf(html),
-      description,
+      title: page.title,
+      description: page.description,
       type: 'website',
+      url,
+      images: [{ url: page.hero?.image || page.image || '/assets/images/hero-werkstatt.jpg' }],
     },
   };
 }
 
-export default async function LegacyPage({ params }) {
+export default async function RoutePage({ params }) {
   const { slug = [] } = await params;
-  const html = readPage(slug);
-  if (!html) notFound();
-  const jsonLd = extractJsonLd(html);
+  const route = normalize(slug);
+  const page = routes[route];
+  if (!page) notFound();
 
+  const schemas = [localBusinessSchema(), breadcrumbSchema(route, page), faqSchema(page)].filter(Boolean);
   return (
     <>
-      {jsonLd.map((json, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: json }}
-        />
+      {schemas.map((schema, index) => (
+        <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       ))}
-      <div dangerouslySetInnerHTML={{ __html: extractBody(html) }} />
+      <PageRenderer page={page} route={route} />
     </>
   );
 }

@@ -5,12 +5,12 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <main className="section">
+    <section className="section">
       <div className="container legal">
         <h1>Seite nicht gefunden</h1>
         <p>Die gewünschte Seite wurde nicht gefunden.</p>
         <p><a className="button button--primary" href="/">Zur Startseite</a></p>
       </div>
-    </main>
+    </section>
   );
 }

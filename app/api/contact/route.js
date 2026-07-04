@@ -19,14 +19,13 @@ export async function POST(request) {
   }
 
   const honeypot = clean(payload.website, 200);
-  if (honeypot) {
-    return NextResponse.json({ ok: true });
-  }
+  if (honeypot) return NextResponse.json({ ok: true });
 
   const name = clean(payload.name, 160);
   const reply = clean(payload.reply, 200);
   const topic = clean(payload.topic, 80);
   const message = clean(payload.message, 4000);
+  const source = clean(payload.source, 80);
   const privacy = Boolean(payload.privacy);
 
   if (!name || !reply || !topic || !message || !privacy) {
@@ -54,12 +53,13 @@ export async function POST(request) {
     'Name: ' + name,
     'Kontakt: ' + reply,
     'Anliegen: ' + topic,
+    source ? 'Quelle: ' + source : '',
     '',
     'Nachricht:',
     message,
     '',
     'DSGVO-Einwilligung: ja',
-  ].join('\n');
+  ].filter(Boolean).join('\n');
 
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
