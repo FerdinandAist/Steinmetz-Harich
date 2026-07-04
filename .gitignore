@@ -1,3 +1,6 @@
 nicht in github laden/
 tmp/
 .vercel/
+.next/
+node_modules/
+out/
