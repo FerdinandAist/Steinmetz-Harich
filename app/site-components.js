@@ -43,7 +43,7 @@ function TrustStrip() {
   return (
     <section className="trust-band" aria-label="Vertrauenssignale" data-motion="trust-strip">
       <div className="container trust-strip">
-        <div><strong>Seit 1958</strong><span>Werkstatt in Neunkirchen-Seelscheid/Eischeid</span></div>
+        <div><strong>Seit 1958</strong><span>Werkstatt in Neunkirchen-Seelscheid</span></div>
         <div><strong>Meisterhandwerk</strong><span>Steinmetz- und Steinbildhauermeister</span></div>
         <div><strong>Persönlich</strong><span>Beratung direkt mit Bruno Johannes Harich</span></div>
         <div><strong>Regional</strong><span>Rhein-Sieg-Kreis bis Köln</span></div>
@@ -85,7 +85,7 @@ function ServicesSection() {
     ['Gedenksteine', '/gedenksteine/', 'Individuelle Grabmale, klassische Formen, Findlinge, Basaltsäulen und Steinlichter.', '/assets/images/gedenksteine.jpg'],
     ['Gestaltung', '/gestaltung/', 'Gespräch, Entwurf, Schrift, Symbol und Umsetzung aus einer ruhigen Hand.', '/assets/images/gestaltung-idee.jpg'],
     ['Steinobjekte', '/steinobjekte/', 'Brunnen, Schalen, Skulpturen und Accessoires aus Naturstein.', '/assets/images/steinobjekt-brunnen.jpg'],
-    ['Werkstatt', '/werkstatt/', 'Seit 1958: Haltung, Herkunft und Meisterhandwerk in Eischeid.', '/assets/images/header-steinmetz-2.jpg'],
+    ['Werkstatt', '/werkstatt/', 'Seit 1958: Haltung, Herkunft und Meisterhandwerk in Neunkirchen-Seelscheid.', '/assets/images/header-steinmetz-2.jpg'],
   ];
   return (
     <section className="section section--warm" data-motion="section">
@@ -114,7 +114,7 @@ function MuehlsteinTeaser() {
 }
 
 function RegionSection() {
-  return <section className="section region-section" data-motion="region"><div className="container region-panel"><div><p className="eyebrow">Regionale Beratung</p><h2>Für Neunkirchen-Seelscheid, Rhein-Sieg-Kreis und Köln.</h2><p>Die Werkstatt ist in Eischeid verwurzelt und berät Menschen aus der Umgebung ebenso wie aus dem weiteren Raum Köln, wenn persönliche Gestaltung wichtiger ist als Standardware.</p></div><ul>{regions.map((region) => <li key={region}>{region}</li>)}</ul></div></section>;
+  return <section className="section region-section" data-motion="region"><div className="container region-panel"><div><p className="eyebrow">Regionale Beratung</p><h2>Für Neunkirchen-Seelscheid, Rhein-Sieg-Kreis und Köln.</h2><p>Die Werkstatt ist in Neunkirchen-Seelscheid verwurzelt und berät Menschen aus der Umgebung ebenso wie aus dem weiteren Raum Köln, wenn persönliche Gestaltung wichtiger ist als Standardware.</p></div><ul>{regions.map((region) => <li key={region}>{region}</li>)}</ul></div></section>;
 }
 
 
@@ -126,6 +126,7 @@ function DecisionHubPage({ page }) {
           <p className="eyebrow">{page.eyebrow}</p>
           <h1>{page.h1}</h1>
           <p>{page.lead}</p>
+          <p className="decision-question">{page.decision.question}</p>
           <div className="decision-actions" aria-label={page.decision.question}>
             {page.decision.options.map(([label, text, href]) => (
               <Link className="decision-button" href={href} key={href}>
@@ -147,15 +148,15 @@ function ChoiceDetailPage({ page }) {
     <>
       <section className="choice-hero" data-motion="section">
         <div className="container choice-panel">
-          <Link className="back-link" href={page.backHref}>Zurck zur Auswahl</Link>
+          <Link className="back-link" href={page.backHref}>Zurück zur Auswahl</Link>
           <p className="eyebrow">{page.eyebrow}</p>
           <h1>{page.h1}</h1>
           <p>{page.lead}</p>
           <div className="choice-list">
-            {page.choices.map(([label, text, href]) => (
+            {page.choices.map(([label, text, href, img]) => (
               <Link className="choice-link" href={href} key={href}>
-                <strong>{label}</strong>
-                <span>{text}</span>
+                {img ? <span className="choice-link__image"><Image src={img} alt={label} fill sizes="(max-width: 760px) 100vw, 50vw" /></span> : null}
+                <span className="choice-link__body"><strong>{label}</strong><span>{text}</span></span>
               </Link>
             ))}
           </div>
@@ -171,7 +172,12 @@ function OverviewPage({ page }) {
 }
 
 function DetailPage({ page }) {
-  return <><Hero page={page} quiet /><section className="section" data-motion="section"><div className="container split split--wide"><div><p className="eyebrow">Beratung und Entwurf</p><h2>Was daraus entstehen kann</h2><p>{page.lead}</p><p>Die endgültige Gestaltung wird nicht vorgegeben, sondern im persönlichen Gespräch entwickelt. So bleibt der Stein ruhig, würdevoll und zugleich unverwechselbar.</p><div className="cta-row cta-row--left"><Link className="button button--primary" href="/kontakt/#formular">Beratung anfragen</Link><a className="button button--secondary" href={company.phoneHref}>Direkt anrufen</a></div></div><ImageCard src={page.image} alt={page.alt} label={page.navTitle} /></div></section><GalleryPlaceholders gallery={page.gallery} /><FaqSection faq={page.faq} /><ContactBand /></>;
+  return <><Hero page={page} quiet /><section className="section" data-motion="section"><div className="container split split--wide"><div><p className="eyebrow">Beratung und Entwurf</p><h2>Was daraus entstehen kann</h2><p>{page.lead}</p><p>Die endgültige Gestaltung wird nicht vorgegeben, sondern im persönlichen Gespräch entwickelt. So bleibt der Stein ruhig, würdevoll und zugleich unverwechselbar.</p></div><ImageCard src={page.image} alt={page.alt} label={page.navTitle} /></div></section><DetailSeo page={page} /><GalleryPlaceholders gallery={page.gallery} /><FaqSection faq={page.faq} /><ContactBand /></>;
+}
+
+function DetailSeo({ page }) {
+  if (!page.seoIntro?.length) return null;
+  return <section className="section detail-seo"><div className="container split"><div><p className="eyebrow">Region und Beratung</p><h2>{page.navTitle} in Neunkirchen-Seelscheid, Rhein-Sieg-Kreis und Köln</h2></div><div>{page.seoIntro.map((text) => <p key={text}>{text}</p>)}</div></div></section>;
 }
 
 function GalleryPlaceholders({ gallery }) {
@@ -179,7 +185,7 @@ function GalleryPlaceholders({ gallery }) {
 }
 
 function WorkshopPage({ page }) {
-  return <><Hero page={page} quiet /><section className="section" data-motion="section"><div className="container workshop-grid"><ImageCard src="/assets/images/bruno-johannes-harich.jpg" alt="Bruno Johannes Harich" label="Bruno Johannes Harich" /><div><p className="eyebrow">Haltung</p><h2>„Gedanken, Anschauungen und Persönlichkeit eines Menschen in Stein gestalten.“</h2><p>Die Werkstatt verbindet Herkunft, regionale Nähe und künstlerischen Anspruch. Bruno Johannes Harich ist seit 1986 ausgebildeter Steinmetz und Steinbildhauer und seit 2009 Geschäftsführer und alleiniger Inhaber der GmbH.</p><div className="timeline"><article><span>1958</span><h3>Gründung und Verwurzelung</h3><p>Die Werkstatt steht seit Jahrzehnten für Natursteinhandwerk in Eischeid.</p></article><article><span>Heute</span><h3>Persönliche Meisterwerkstatt</h3><p>Beratung, Entwurf und Umsetzung bleiben eng miteinander verbunden.</p></article></div></div></div></section><ContactBand /></>;
+  return <><Hero page={page} quiet /><section className="section" data-motion="section"><div className="container workshop-grid"><ImageCard src="/assets/images/bruno-johannes-harich.jpg" alt="Bruno Johannes Harich" label="Bruno Johannes Harich" /><div><p className="eyebrow">Haltung</p><h2>„Gedanken, Anschauungen und Persönlichkeit eines Menschen in Stein gestalten.“</h2><p>Die Werkstatt verbindet Herkunft, regionale Nähe und künstlerischen Anspruch. Bruno Johannes Harich ist seit 1986 ausgebildeter Steinmetz und Steinbildhauer und seit 2009 Geschäftsführer und alleiniger Inhaber der GmbH.</p><div className="timeline"><article><span>1958</span><h3>Gründung und Verwurzelung</h3><p>Die Werkstatt steht seit Jahrzehnten für Natursteinhandwerk in Neunkirchen-Seelscheid.</p></article><article><span>Heute</span><h3>Persönliche Meisterwerkstatt</h3><p>Beratung, Entwurf und Umsetzung bleiben eng miteinander verbunden.</p></article></div></div></div></section><ContactBand /></>;
 }
 
 function ArticlePage({ page }) {

@@ -19,7 +19,7 @@ export function SiteShell({ children }) {
         <a className="skip-link" href="#main">Zum Inhalt springen</a>
         <div className="topbar">
           <div className="container topbar__inner">
-            <span>Steinmetz- und Steinbildhauer-Meister in Neunkirchen-Seelscheid/Eischeid</span>
+            <span>Steinmetz- und Steinbildhauer-Meister in Neunkirchen-Seelscheid</span>
             <a href="tel:+4922472386">Telefon 02247 2386</a>
           </div>
         </div>
@@ -43,7 +43,7 @@ export function SiteShell({ children }) {
       <main id="main">{children}</main>
       <footer className="site-footer">
         <div className="container footer-grid">
-          <div><strong>Steinmetzwerkstatt Bruno Johannes Harich GmbH</strong><p>Zum Nüchel 17<br />53819 Neunkirchen-Seelscheid, Eischeid</p></div>
+          <div><strong>Steinmetzwerkstatt Bruno Johannes Harich GmbH</strong><p>Zum Nüchel 17<br />53819 Neunkirchen-Seelscheid</p></div>
           <div><strong>Kontakt</strong><p><a href="tel:+4922472386">02247 2386</a><br /><a href="mailto:kontakt@steinmetzwerkstatt-harich.de">kontakt@steinmetzwerkstatt-harich.de</a></p></div>
           <div><strong>Leistungen</strong><p><Link href="/gedenksteine/">Gedenksteine</Link><br /><Link href="/gestaltung/">Gestaltung</Link><br /><Link href="/steinobjekte/">Steinobjekte</Link></p></div>
           <div><strong>Rechtliches</strong><p><Link href="/impressum/">Impressum</Link><br /><Link href="/datenschutz/">Datenschutz</Link></p></div>
