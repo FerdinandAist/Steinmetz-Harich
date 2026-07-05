@@ -5,8 +5,8 @@ import { company, regions, reviews } from './site-data';
 
 export function PageRenderer({ page, route }) {
   if (page.template === 'home') return <HomePage page={page} />;
-  if (page.template === 'productHub') return <ChooserPage page={page} tone="product" />;
-  if (page.template === 'craftHub') return <ChooserPage page={page} tone="craft" />;
+  if (page.template === 'decisionHub') return <DecisionHubPage page={page} />;
+  if (page.template === 'choiceDetail') return <ChoiceDetailPage page={page} />;
   if (page.template === 'overview') return <OverviewPage page={page} route={route} />;
   if (page.template === 'detail') return <DetailPage page={page} route={route} />;
   if (page.template === 'workshop') return <WorkshopPage page={page} />;
@@ -63,7 +63,7 @@ function HomePage({ page }) {
           <div>
             <p className="eyebrow">Persönliche Meisterwerkstatt</p>
             <h2>Erinnerung braucht keine Standardlösung.</h2>
-            <p>Viele Menschen kommen mit Unsicherheit: Welche Form passt? Welche Schrift ist würdevoll? Wie lässt sich Persönlichkeit zeigen, ohne laut zu werden? In der Werkstatt Harich beginnt die Antwort mit einem Gespräch.</p>
+            <p>Viele Menschen kommen mit Unsicherheit: Welche Form passt Welche Schrift ist würdevoll Wie lässt sich Persönlichkeit zeigen, ohne laut zu werden In der Werkstatt Harich beginnt die Antwort mit einem Gespräch.</p>
             <p>Aus Zuhören, Entwurf, Materialgefühl und handwerklicher Umsetzung entstehen Gedenksteine, Steinlichter, Findlinge, Basaltsäulen, Skulpturen und Steinobjekte mit eigener Bedeutung.</p>
           </div>
           <ImageCard src="/assets/images/bruno-johannes-harich.jpg" alt="Bruno Johannes Harich in der Werkstatt" label="Bruno Johannes Harich - persönliche Beratung und Meisterhandwerk" />
@@ -118,37 +118,49 @@ function RegionSection() {
 }
 
 
-function ChooserPage({ page, tone }) {
+function DecisionHubPage({ page }) {
   return (
     <>
-      <Hero page={page} quiet />
-      <TrustStrip />
-      <section className="section chooser-section" data-motion="section">
-        <div className="container section-head">
-          <p className="eyebrow">Gef?hrte Auswahl</p>
-          <h2>{page.chooser.question}</h2>
+      <section className="decision-hero" data-motion="section">
+        <div className="container decision-panel">
+          <p className="eyebrow">{page.eyebrow}</p>
+          <h1>{page.h1}</h1>
           <p>{page.lead}</p>
-        </div>
-        <div className="container chooser-grid">
-          {page.chooser.groups.map((group) => (
-            <article className="chooser-card" key={group.title}>
-              <div className="chooser-card__image">
-                <Image src={group.image} alt={group.title} fill sizes="(max-width: 900px) 100vw, 50vw" />
-              </div>
-              <div className="chooser-card__body">
-                <span>{tone === 'product' ? 'Auswahl' : 'Orientierung'}</span>
-                <h3>{group.title}</h3>
-                <p>{group.text}</p>
-                <div className="chooser-links">
-                  {group.links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
-                </div>
-              </div>
-            </article>
-          ))}
+          <div className="decision-actions" aria-label={page.decision.question}>
+            {page.decision.options.map(([label, text, href]) => (
+              <Link className="decision-button" href={href} key={href}>
+                <strong>{label}</strong>
+                <span>{text}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
-      {tone === 'product' ? <MeaningGallery /> : <ProcessSection />}
-      <FaqSection faq={page.faq} />
+      <TrustStrip />
+      <ContactBand />
+    </>
+  );
+}
+
+function ChoiceDetailPage({ page }) {
+  return (
+    <>
+      <section className="choice-hero" data-motion="section">
+        <div className="container choice-panel">
+          <Link className="back-link" href={page.backHref}>Zurck zur Auswahl</Link>
+          <p className="eyebrow">{page.eyebrow}</p>
+          <h1>{page.h1}</h1>
+          <p>{page.lead}</p>
+          <div className="choice-list">
+            {page.choices.map(([label, text, href]) => (
+              <Link className="choice-link" href={href} key={href}>
+                <strong>{label}</strong>
+                <span>{text}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
       <ContactBand />
     </>
   );

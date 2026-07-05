@@ -157,7 +157,7 @@ export function MapConsent() {
     <div className="map-consent">
       <h3>Anfahrt datensparsam ansehen</h3>
       <p>Eine externe Karte wird erst geladen, wenn Sie aktiv zustimmen.</p>
-      {show ? <iframe title="Karte Steinmetzwerkstatt Harich" src="https://www.openstreetmap.org/export/embed.html?bbox=7.2702%2C50.8504%2C7.3302%2C50.8904&layer=mapnik" loading="lazy" /> : <button className="button button--secondary" type="button" onClick={() => setShow(true)}>Karte laden</button>}
+      {show ? <iframe title="Karte Steinmetzwerkstatt Harich" src="https://www.openstreetmap.org/export/embed.htmlbbox=7.2702%2C50.8504%2C7.3302%2C50.8904&layer=mapnik" loading="lazy" /> : <button className="button button--secondary" type="button" onClick={() => setShow(true)}>Karte laden</button>}
     </div>
   );
 }
