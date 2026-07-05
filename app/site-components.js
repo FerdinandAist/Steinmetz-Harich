@@ -43,7 +43,7 @@ function TrustStrip() {
   return (
     <section className="trust-band" aria-label="Vertrauenssignale" data-motion="trust-strip">
       <div className="container trust-strip">
-        <div><strong>Seit 1958</strong><span>Werkstatt in Neunkirchen-Seelscheid</span></div>
+        <div><strong>Seit 1958</strong><span>Werkstatt in Neunkirchen-Seelscheid/Eischeid</span></div>
         <div><strong>Meisterhandwerk</strong><span>Steinmetz- und Steinbildhauermeister</span></div>
         <div><strong>Persönlich</strong><span>Beratung direkt mit Bruno Johannes Harich</span></div>
         <div><strong>Regional</strong><span>Rhein-Sieg-Kreis bis Köln</span></div>
@@ -85,7 +85,7 @@ function ServicesSection() {
     ['Gedenksteine', '/gedenksteine/', 'Individuelle Grabmale, klassische Formen, Findlinge, Basaltsäulen und Steinlichter.', '/assets/images/gedenksteine.jpg'],
     ['Gestaltung', '/gestaltung/', 'Gespräch, Entwurf, Schrift, Symbol und Umsetzung aus einer ruhigen Hand.', '/assets/images/gestaltung-idee.jpg'],
     ['Steinobjekte', '/steinobjekte/', 'Brunnen, Schalen, Skulpturen und Accessoires aus Naturstein.', '/assets/images/steinobjekt-brunnen.jpg'],
-    ['Werkstatt', '/werkstatt/', 'Seit 1958: Haltung, Herkunft und Meisterhandwerk in Neunkirchen-Seelscheid.', '/assets/images/header-steinmetz-2.jpg'],
+    ['Werkstatt', '/werkstatt/', 'Seit 1958: Haltung, Herkunft und Meisterhandwerk in Neunkirchen-Seelscheid/Eischeid.', '/assets/images/header-steinmetz-2.jpg'],
   ];
   return (
     <section className="section section--warm" data-motion="section">

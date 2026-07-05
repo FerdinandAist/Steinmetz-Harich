@@ -22,7 +22,7 @@ export function SiteShell({ children }) {
         <a className="skip-link" href="#main">Zum Inhalt springen</a>
         <div className="topbar">
           <div className="container topbar__inner">
-            <span>Steinmetz- und Steinbildhauer-Meister in Neunkirchen-Seelscheid</span>
+            <span>Steinmetz- und Steinbildhauer-Meister in Neunkirchen-Seelscheid/Eischeid</span>
             <a href="tel:+4922472386">Telefon 02247 2386</a>
           </div>
         </div>
