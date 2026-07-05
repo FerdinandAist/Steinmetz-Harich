@@ -41,6 +41,88 @@ export const routes = {
     },
     faq: commonFaq,
   },
+
+  'gedenksteine-steinwerke': {
+    template: 'productHub',
+    title: 'Gedenksteine & Steinwerke | Harich Rhein-Sieg-Kreis bis K?ln',
+    description: '?bersicht f?r Gedenksteine, Steinlichter, Findlinge, Basalts?ulen, Brunnen, Schalen, Skulpturen und Steinobjekte der Steinmetzwerkstatt Harich.',
+    navTitle: 'Gedenksteine & Steinwerke',
+    eyebrow: 'Auswahl finden',
+    h1: 'Welche Steinl?sung suchen Sie?',
+    lead: 'W?hlen Sie zuerst, ob es um Erinnerung und Grabmal oder um Steinwerke f?r Haus, Garten und besondere Orte geht. Danach f?hrt die Auswahl zu den passenden Unterseiten.',
+    image: '/assets/images/gedenksteine.jpg',
+    alt: 'Naturstein-Gedenkstein und Steinwerk der Steinmetzwerkstatt Harich',
+    chooser: {
+      question: 'Was m?chten Sie gestalten lassen?',
+      groups: [
+        {
+          title: 'Erinnerung & Grabmal',
+          text: 'F?r Gedenksteine, Grabmale, Steinlichter, Findlinge und Basalts?ulen.',
+          image: '/assets/images/gedenksteine.jpg',
+          links: [
+            ['Gedenksteine ?bersicht', '/gedenksteine/'],
+            ['Innovative Gedenksteine', '/gedenksteine/innovative-gedenksteine/'],
+            ['Klassische Gedenksteine', '/gedenksteine/klassische-gedenksteine/'],
+            ['Findlinge & Basalts?ulen', '/gedenksteine/findlinge-basaltsaeulen/'],
+            ['Steinlichter', '/gedenksteine/steinlichter/'],
+          ],
+        },
+        {
+          title: 'Haus, Garten & besondere Orte',
+          text: 'F?r Brunnen, Schalen, Skulpturen, Accessoires und freie Steinobjekte.',
+          image: '/assets/images/steinobjekt-brunnen.jpg',
+          links: [
+            ['Steinobjekte ?bersicht', '/steinobjekte/'],
+            ['Brunnen', '/steinobjekte/brunnen/'],
+            ['Schalen', '/steinobjekte/schalen/'],
+            ['Skulpturen', '/steinobjekte/skulpturen/'],
+            ['Accessoires', '/steinobjekte/accessoires/'],
+          ],
+        },
+      ],
+    },
+    faq: commonFaq,
+  },
+  'handwerk-gestaltung': {
+    template: 'craftHub',
+    title: 'Handwerk & Gestaltung | Beratung und Werkstatt Harich',
+    description: 'Pers?nliche Beratung, Entwurf, Schrift, Symbol, Umsetzung, Werkstattgeschichte und Bruno Johannes Harich im ?berblick.',
+    navTitle: 'Handwerk & Gestaltung',
+    eyebrow: 'Beratung, Entwurf und Werkstatt',
+    h1: 'Wie wird aus einem Gedanken ein Steinwerk?',
+    lead: 'Diese Seite f?hrt durch Beratung, Gestaltung und Werkstatt. W?hlen Sie, ob Sie den Entstehungsprozess verstehen oder die Meisterwerkstatt kennenlernen m?chten.',
+    image: '/assets/images/gestaltung-idee.jpg',
+    alt: 'Entwurf und handwerkliche Gestaltung in Stein',
+    chooser: {
+      question: 'Wobei m?chten Sie Orientierung?',
+      groups: [
+        {
+          title: 'Gestaltung verstehen',
+          text: 'F?r Gespr?ch, Idee, Entwurf, Schrift, Symbol und handwerkliche Umsetzung.',
+          image: '/assets/images/gestaltung-idee.jpg',
+          links: [
+            ['Gestaltung ?bersicht', '/gestaltung/'],
+            ['Idee & Entwurf', '/gestaltung/idee-und-entwurf/'],
+            ['Entstehung & Umsetzung', '/gestaltung/entstehung-und-umsetzung/'],
+            ['Schrift & Symbol', '/gestaltung/schrift-und-symbol/'],
+          ],
+        },
+        {
+          title: 'Werkstatt kennenlernen',
+          text: 'F?r Haltung, Geschichte, Bruno Johannes Harich und das Referenzprojekt Mahnender M?hlstein.',
+          image: '/assets/images/bruno-johannes-harich.jpg',
+          links: [
+            ['Werkstatt ?bersicht', '/werkstatt/'],
+            ['Philosophie', '/werkstatt/philosophie/'],
+            ['Chronik', '/werkstatt/chronik/'],
+            ['Bruno Johannes Harich', '/werkstatt/bruno-johannes-harich/'],
+            ['Mahnender M?hlstein', '/mahnender-muehlstein-papst-franziskus/'],
+          ],
+        },
+      ],
+    },
+    faq: commonFaq,
+  },
   'gedenksteine': {
     template: 'overview',
     title: 'Individuelle Gedenksteine Rhein-Sieg-Kreis bis Köln | Harich',

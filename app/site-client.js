@@ -9,12 +9,8 @@ export function SiteShell({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const nav = [
-    ['Gedenksteine', '/gedenksteine/'],
-    ['Gestaltung', '/gestaltung/'],
-    ['Steinobjekte', '/steinobjekte/'],
-    ['Werkstatt', '/werkstatt/'],
-    ['Referenzprojekt', '/mahnender-muehlstein-papst-franziskus/'],
-    ['Kontakt', '/kontakt/'],
+    ['Gedenksteine & Steinwerke', '/gedenksteine-steinwerke/'],
+    ['Handwerk & Gestaltung', '/handwerk-gestaltung/'],
   ];
 
   return (
