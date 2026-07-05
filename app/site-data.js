@@ -35,7 +35,7 @@ export const routes = {
     hero: {
       eyebrow: 'Steinmetz- und Steinbildhauer-Meister seit 1958',
       h1: 'Ein Stein wird persönlich, wenn er aus einem Gespräch entsteht.',
-      text: 'Bruno Johannes Harich gestaltet Gedenksteine und Steinobjekte, die Erinnerung, Persönlichkeit und Beständigkeit sichtbar machen - in Neunkirchen-Seelscheid, im Rhein-Sieg-Kreis und bis Köln.',
+      text: 'Bruno Johannes Harich gestaltet Gedenksteine und Steinobjekte, die Erinnerung, Persönlichkeit und Beständigkeit sichtbar machen - in der Region Köln/Bonn, insbesondere im Rhein-Sieg-Kreis.',
       image: '/assets/images/hero-stein.jpg',
       alt: 'Ruhige Naturstein- und Landschaftsaufnahme als Hintergrund der Steinmetzwerkstatt Harich',
     },
@@ -233,6 +233,28 @@ export const routes = {
     lead: 'Ein Steinmetzprojekt, das handwerkliche Präzision, künstlerische Aussagekraft und gesellschaftliche Verantwortung verbindet.',
     image: '/assets/images/muehlstein-vatikan.jpg',
     alt: 'Bruno Johannes Harich bei der Übergabe des Mahnenden Mühlsteins an Papst Franziskus',
+    articleSections: [
+      ['Ein Stein als Mahnung', [
+        'Der Mahnende Mühlstein ist ein Steinmetzprojekt, das weit über handwerkliche Fertigung hinausgeht. Bruno Johannes Harich fertigte den rund 1,4 Tonnen schweren Mühlstein im Auftrag der Initiative gegen Gewalt und sexuellen Missbrauch an Kindern und Jugendlichen.',
+        'In den Stein wurde ein Vers aus dem Matthäus-Evangelium eingearbeitet. Die Form des Mühlsteins, das biblische Motiv und die schwere Materialität verdichten sich zu einem Mahnmal: Erwachsene sollen an ihre Verantwortung gegenüber Kindern erinnert werden.',
+        'Gerade diese Verbindung aus Naturstein, Schrift und gesellschaftlicher Aussage macht das Projekt für die Werkstatt Harich zu einer besonderen Referenz. Der Stein ist kein dekoratives Objekt, sondern ein Werk mit klarer Haltung.'
+      ]],
+      ['Von deutschen Städten bis nach Rom', [
+        'Bevor der Mühlstein nach Rom gebracht wurde, war er über viele Jahre in Deutschland unterwegs. Die Initiative stellte ihn auf öffentlichen Plätzen aus, um Aufmerksamkeit für den Schutz von Kindern und Jugendlichen zu schaffen.',
+        'Der Fachartikel in Naturstein berichtet, dass der Mahnende Mühlstein über zehn Jahre durch Deutschland tourte und in mehr als 31 Städten für jeweils mehrere Wochen auf Marktplätzen stand. Auch der General-Anzeiger beschreibt den Weg des Steins als lange öffentliche Mahnung.',
+        'Aus einem handwerklich bearbeiteten Naturstein wurde damit ein wiederkehrender Gesprächsanlass: Menschen sollten stehen bleiben, lesen, nachdenken und die Botschaft nicht übersehen.'
+      ]],
+      ['Die Übergabe an Papst Franziskus', [
+        'Gemeinsam mit Johannes Heibel, dem Vorsitzenden der Initiative, brachte Bruno Johannes Harich den Mühlstein nach Rom. Die Reise mit Transporter und Anhänger führte über rund 1.450 Kilometer bis zum Petersplatz.',
+        'Am 27. November 2019 wurde der Mühlstein Papst Franziskus übergeben. In den Berichten wird geschildert, dass der Stein direkt auf den Petersplatz gebracht und dort mit technischer Hilfe platziert wurde.',
+        'Die Übergabe war deshalb besonders, weil Papst Franziskus selbst wiederholt auf die Verantwortung der Kirche im Umgang mit Missbrauch verwiesen hatte. Der Stein machte diese Mahnung sichtbar, schwer und dauerhaft.'
+      ]],
+      ['Handwerkliche und menschliche Bedeutung', [
+        'Für Bruno Johannes Harich verbindet das Projekt Steinmetzhandwerk, künstlerische Aussage und gesellschaftliche Verantwortung. Die Bearbeitung eines solchen Steins verlangt nicht nur Präzision, sondern auch Respekt vor dem Thema.',
+        'Die eingemeißelte Schrift, das Gewicht des Materials und der öffentliche Weg des Mahnmals zeigen, wie Naturstein eine Botschaft tragen kann, die über den Moment hinaus Bestand hat.',
+        'Auf der Website dient dieses Referenzprojekt deshalb nicht als Nachricht, sondern als Vertrauensanker: Es zeigt, dass die Steinmetzwerkstatt Harich schwierige, persönliche und gesellschaftlich bedeutsame Themen in eine würdige Form aus Stein übersetzen kann.'
+      ]]
+    ],
     sources: [
       ['General-Anzeiger Bonn/Rhein-Sieg: Mühlstein gegen Missbrauch', 'https://ga.de/region/rhein-sieg-kreis/neunkirchen-seelscheid/muehlstein-gegen-missbrauch_aid-43219407'],
       ['Fachzeitschrift Naturstein: Artikel zum Mahnenden Mühlstein', 'https://www.natursteinonline.de/'],

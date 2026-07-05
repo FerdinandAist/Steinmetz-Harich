@@ -136,6 +136,7 @@ export function ContactForm({ source = 'seite' }) {
 export function ReviewsCarousel({ reviews }) {
   const [active, setActive] = useState(0);
   const review = reviews[active];
+  const goTo = (index) => setActive((index + reviews.length) % reviews.length);
   return (
     <section className="review-band" aria-label="Rezensionen als Platzhalter">
       <div className="container review-shell">
@@ -145,11 +146,17 @@ export function ReviewsCarousel({ reviews }) {
           <p>Dieser Bereich ist vorbereitet und wird später mit echten, freigegebenen Kundenstimmen gefüllt.</p>
         </div>
         <div className="review-card">
-          <span className="placeholder-label">Platzhalter - später ersetzen</span>
-          <blockquote>{review.quote}</blockquote>
-          <p>{review.person}</p>
-          <div className="review-controls" aria-label="Rezension wechseln">
-            {reviews.map((item, index) => <button key={item.person} type="button" className={index === active ? 'is-active' : ''} onClick={() => setActive(index)}><span className="sr-only">Rezension {index + 1}</span></button>)}
+          <div className="review-card__body" key={review.person}>
+            <span className="placeholder-label">Platzhalter - später ersetzen</span>
+            <blockquote>{review.quote}</blockquote>
+            <p>{review.person}</p>
+          </div>
+          <div className="review-nav" aria-label="Rezension wechseln">
+            <button type="button" onClick={() => goTo(active - 1)} aria-label="Vorherige Rezension">‹</button>
+            <div className="review-controls">
+              {reviews.map((item, index) => <button key={item.person} type="button" className={index === active ? 'is-active' : ''} onClick={() => goTo(index)} aria-label={'Rezension ' + (index + 1) + ' anzeigen'}><span>{index + 1}</span></button>)}
+            </div>
+            <button type="button" onClick={() => goTo(active + 1)} aria-label="Nächste Rezension">›</button>
           </div>
         </div>
       </div>

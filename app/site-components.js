@@ -106,7 +106,7 @@ function MeaningGallery() {
     ['Ein Steinlicht als stilles Zeichen am Grab', '/assets/images/steinlicht.jpg'],
     ['Schrift und Symbol als persönliche Spur', '/assets/images/gestaltung-symbol.jpg'],
   ];
-  return <section className="section gallery-section" data-motion="gallery"><div className="container section-head"><p className="eyebrow">Galerie mit Bedeutung</p><h2>Nicht nur Produkte, sondern Zeichen.</h2><p>Die Bildflächen zeigen exemplarisch, wie Naturstein Bedeutung tragen kann. Weitere echte Referenzen können später ergänzt werden.</p></div><div className="container meaning-grid">{items.map(([label, img]) => <ImageCard key={label} src={img} label={label} alt={label} />)}</div></section>;
+  return <section className="section gallery-section" data-motion="gallery"><div className="container section-head"><p className="eyebrow">Galerie mit Bedeutung</p><h2>Nicht nur Produkte, sondern Zeichen.</h2><p>Jede Arbeit zeigt, wie Naturstein Erinnerung, Persönlichkeit und besondere Orte sichtbar machen kann.</p></div><div className="container meaning-grid">{items.map(([label, img]) => <ImageCard key={label} src={img} label={label} alt={label} />)}</div></section>;
 }
 
 function MuehlsteinTeaser() {
@@ -137,7 +137,6 @@ function DecisionHubPage({ page }) {
           </div>
         </div>
       </section>
-      <SelectionGuide />
       <TrustStrip />
       <ContactBand />
     </>
@@ -163,7 +162,6 @@ function ChoiceDetailPage({ page }) {
           </div>
         </div>
       </section>
-      <SelectionGuide compact />
       <ContactBand />
     </>
   );
@@ -187,13 +185,6 @@ function DetailSeo({ page }) {
   return <section className="section detail-seo"><div className="container split"><div><p className="eyebrow">Region und Beratung</p><h2>{page.navTitle} in Neunkirchen-Seelscheid, Rhein-Sieg-Kreis und Köln</h2><div className="insight-grid">{cards.map(([title, text]) => <article key={title}><strong>{title}</strong><span>{text}</span></article>)}</div></div><div>{page.seoIntro.map((text) => <p key={text}>{text}</p>)}</div></div></section>;
 }
 
-function SelectionGuide({ compact = false }) {
-  const items = compact
-    ? [['1', 'Kategorie wählen', 'Der nächste Klick führt direkt zur passenden Unterseite.'], ['2', 'Möglichkeiten ansehen', 'Bilder, Materialien und Gestaltungsideen geben Orientierung.'], ['3', 'Beratung starten', 'Danach kann das Gespräch gezielt und trotzdem offen beginnen.']]
-    : [['1', 'Bereich wählen', 'Erinnerung und Grabmal oder Steinwerke für Haus, Garten und besondere Orte.'], ['2', 'Kategorie öffnen', 'Die Auswahl führt zu Gedenksteinen, Steinlichtern, Brunnen, Skulpturen und mehr.'], ['3', 'Persönlich klären', 'Im Gespräch wird aus der Richtung ein konkreter Entwurf.']];
-  return <section className={'section selection-guide' + (compact ? ' selection-guide--compact' : '')}><div className="container guide-grid">{items.map(([num, title, text]) => <article key={num}><span>{num}</span><strong>{title}</strong><p>{text}</p></article>)}</div></section>;
-}
-
 function GalleryPlaceholders({ gallery }) {
   return <section className="section section--warm" data-motion="section"><div className="container section-head"><p className="eyebrow">Bildplätze</p><h2>Referenzen und Details ergänzen</h2><p>Diese Flächen sind bewusst für spätere echte Werkstatt- und Detailbilder vorbereitet.</p></div><div className="container placeholder-grid">{gallery.map(([label, img], index) => <figure className="placeholder-card" key={label}><div><Image src={img} alt={label} fill sizes="(max-width: 800px) 100vw, 25vw" /></div><figcaption><span>{index > 1 ? 'Platzhalter' : 'Beispielbild'}</span>{label}</figcaption></figure>)}</div></section>;
 }
@@ -203,7 +194,8 @@ function WorkshopPage({ page }) {
 }
 
 function ArticlePage({ page }) {
-  return <><Hero page={page} quiet /><section className="section" data-motion="article"><div className="container article-layout"><article className="article-body"><p className="eyebrow">Bedeutung des Projekts</p><h2>Ein Werk mit Haltung</h2><p>Der Mahnende Mühlstein zeigt, welche Kraft ein Steinwerk entwickeln kann, wenn Material, Form, Schrift und Haltung zusammenkommen. Für die Steinmetzwerkstatt Harich ist das Projekt ein sichtbares Beispiel dafür, wie handwerkliche Arbeit gesellschaftliche Verantwortung tragen kann.</p><p>Die Übergabe an Papst Franziskus macht das Projekt zu einem besonderen Vertrauensanker: Es steht für Präzision, künstlerische Aussagekraft und die Fähigkeit, ein schwieriges Thema in eine klare, dauerhafte Form zu bringen.</p><h2>Dokumentierte Veröffentlichungen</h2><div className="source-list">{page.sources.map(([label, href]) => <a href={href} key={href} target="_blank" rel="noreferrer">{label}</a>)}</div></article><aside className="article-aside"><ImageCard src="/assets/images/muehlstein-projekt.jpg" alt="Mahnender Mühlstein" label="Der Mahnende Mühlstein als Steinmetzprojekt" /><ImageCard src="/assets/images/muehlstein-papst.jpg" alt="Papst Franziskus mit Bruno Johannes Harich" label="Übergabe an Papst Franziskus" /></aside></div></section><ContactBand /></>;
+  const sections = page.articleSections || [];
+  return <><Hero page={page} quiet /><section className="section" data-motion="article"><div className="container article-layout"><article className="article-body"><p className="eyebrow">Bedeutung des Projekts</p>{sections.map(([title, paragraphs]) => <section key={title}><h2>{title}</h2>{paragraphs.map((text) => <p key={text}>{text}</p>)}</section>)}<h2>Dokumentierte Veröffentlichungen</h2><div className="source-list">{page.sources.map(([label, href]) => <a href={href} key={href} target="_blank" rel="noreferrer">{label}</a>)}</div></article><aside className="article-aside"><ImageCard src="/assets/images/muehlstein-projekt.jpg" alt="Mahnender Mühlstein" label="Der Mahnende Mühlstein als Steinmetzprojekt" /><ImageCard src="/assets/images/muehlstein-papst.jpg" alt="Papst Franziskus mit Bruno Johannes Harich" label="Übergabe an Papst Franziskus" /></aside></div></section><ContactBand /></>;
 }
 
 function ContactPage({ page }) {
