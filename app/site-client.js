@@ -2,15 +2,18 @@
 
 import { useId, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const topics = ['Gedenkstein', 'Steinlicht', 'Skulptur / Steinobjekt', 'Beratung', 'Sonstiges'];
 
 export function SiteShell({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
+  const pathname = usePathname() || '/';
+  const currentPath = pathname.endsWith('/') ? pathname : pathname + '/';
   const nav = [
-    ['Gedenksteine & Steinwerke', '/gedenksteine-steinwerke/'],
-    ['Handwerk & Gestaltung', '/handwerk-gestaltung/'],
+    ['Gedenksteine & Steinwerke', '/gedenksteine-steinwerke/', ['/gedenksteine-steinwerke/', '/gedenksteine/', '/steinobjekte/']],
+    ['Handwerk & Gestaltung', '/handwerk-gestaltung/', ['/handwerk-gestaltung/', '/gestaltung/', '/werkstatt/', '/mahnender-muehlstein-papst-franziskus/']],
   ];
 
   return (
@@ -32,7 +35,10 @@ export function SiteShell({ children }) {
             <span></span><span></span><span></span><span className="sr-only">Menü öffnen</span>
           </button>
           <nav className="site-nav" id="site-nav" aria-label="Hauptnavigation">
-            {nav.map(([label, href]) => <Link key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</Link>)}
+            {nav.map(([label, href, paths]) => {
+              const active = paths.some((path) => currentPath.startsWith(path));
+              return <Link key={href} href={href} className={active ? 'is-active' : undefined} aria-current={active ? 'page' : undefined} onClick={() => setMenuOpen(false)}>{label}</Link>;
+            })}
           </nav>
           <div className="header-actions">
             <button className="button button--primary button--small" type="button" onClick={() => setContactOpen(true)}>Beratung anfragen</button>

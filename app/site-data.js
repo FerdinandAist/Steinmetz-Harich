@@ -36,8 +36,8 @@ export const routes = {
       eyebrow: 'Steinmetz- und Steinbildhauer-Meister seit 1958',
       h1: 'Ein Stein wird persönlich, wenn er aus einem Gespräch entsteht.',
       text: 'Bruno Johannes Harich gestaltet Gedenksteine und Steinobjekte, die Erinnerung, Persönlichkeit und Beständigkeit sichtbar machen - in Neunkirchen-Seelscheid, im Rhein-Sieg-Kreis und bis Köln.',
-      image: '/assets/images/hero-werkstatt.jpg',
-      alt: 'Ruhige Werkstattaufnahme mit Naturstein der Steinmetzwerkstatt Harich',
+      image: '/assets/images/hero-stein.jpg',
+      alt: 'Ruhige Naturstein- und Landschaftsaufnahme als Hintergrund der Steinmetzwerkstatt Harich',
     },
     faq: commonFaq,
   },
@@ -90,7 +90,6 @@ export const routes = {
     h1: 'Was soll als Erinnerung gestaltet werden?',
     lead: 'Wählen Sie die Kategorie, die am besten passt.',
     choices: [
-      ['Gedenksteine Übersicht', 'Alle Möglichkeiten rund um individuelle Grabmale und Erinnerung in Stein.', '/gedenksteine/', '/assets/images/gedenksteine.jpg'],
       ['Innovative Gedenksteine', 'Freie Formen, persönliche Symbole und individuelle Entwürfe.', '/gedenksteine/innovative-gedenksteine/', '/assets/images/innovative-gedenksteine.jpg'],
       ['Klassische Gedenksteine', 'Ruhige, bewährte Formen mit handwerklicher Präzision.', '/gedenksteine/klassische-gedenksteine/', '/assets/images/klassische-gedenksteine.jpg'],
       ['Findlinge & Basaltsäulen', 'Natürliche Steinformen für naturverbundene Erinnerungszeichen.', '/gedenksteine/findlinge-basaltsaeulen/', '/assets/images/basaltsaeulen.jpg'],
@@ -107,7 +106,6 @@ export const routes = {
     h1: 'Welches Steinwerk passt zu Ihrem Ort?',
     lead: 'Wählen Sie die Kategorie, die am besten passt.',
     choices: [
-      ['Steinobjekte Übersicht', 'Brunnen, Schalen, Skulpturen und Accessoires im Überblick.', '/steinobjekte/', '/assets/images/steinobjekt-brunnen.jpg'],
       ['Brunnen', 'Wasser und Stein als ruhiger Mittelpunkt im Garten.', '/steinobjekte/brunnen/', '/assets/images/steinobjekt-brunnen.jpg'],
       ['Schalen', 'Handwerkliche Steinformen für Innen- und Außenräume.', '/steinobjekte/schalen/', '/assets/images/steinobjekt-steinlicht.jpg'],
       ['Skulpturen', 'Künstlerische Arbeiten aus Naturstein.', '/steinobjekte/skulpturen/', '/assets/images/steinobjekt-skulptur.jpg'],
@@ -124,7 +122,6 @@ export const routes = {
     h1: 'Welcher Teil der Gestaltung interessiert Sie?',
     lead: 'Wählen Sie die Kategorie, die am besten passt.',
     choices: [
-      ['Gestaltung Übersicht', 'Der Weg vom Gedanken zum individuellen Steinwerk.', '/gestaltung/', '/assets/images/gestaltung-idee.jpg'],
       ['Idee & Entwurf', 'Aus Erinnerungen, Worten und Bildern entsteht eine klare Richtung.', '/gestaltung/idee-und-entwurf/', '/assets/images/gestaltung-idee.jpg'],
       ['Entstehung & Umsetzung', 'Vom ausgewählten Stein bis zur handwerklichen Fertigung.', '/gestaltung/entstehung-und-umsetzung/', '/assets/images/gestaltung-umsetzung.jpg'],
       ['Schrift & Symbol', 'Persönliche Zeichen, Schriften und Oberflächen mit Bedeutung.', '/gestaltung/schrift-und-symbol/', '/assets/images/gestaltung-symbol.jpg'],
@@ -140,7 +137,6 @@ export const routes = {
     h1: 'Was möchten Sie über die Werkstatt erfahren?',
     lead: 'Wählen Sie die Kategorie, die am besten passt.',
     choices: [
-      ['Werkstatt Übersicht', 'Meisterwerkstatt, Beratung und Handwerk seit 1958.', '/werkstatt/', '/assets/images/bruno-johannes-harich.jpg'],
       ['Philosophie', 'Warum ein Steinwerk mit Aufmerksamkeit beginnt.', '/werkstatt/philosophie/', '/assets/images/header-steinmetz-2.jpg'],
       ['Chronik', 'Seit 1958 regional verwurzelt.', '/werkstatt/chronik/', '/assets/images/chronik.jpg'],
       ['Bruno Johannes Harich', 'Steinmetz- und Steinbildhauermeister mit persönlicher Handschrift.', '/werkstatt/bruno-johannes-harich/', '/assets/images/bruno-johannes-harich.jpg'],

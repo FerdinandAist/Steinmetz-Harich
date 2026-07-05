@@ -58,6 +58,7 @@ function HomePage({ page }) {
       <Hero page={page} />
       <ReviewsCarousel reviews={reviews} />
       <TrustStrip />
+      <MuehlsteinTeaser />
       <section className="section intro-section" data-motion="section">
         <div className="container split split--wide">
           <div>
@@ -72,7 +73,6 @@ function HomePage({ page }) {
       <ServicesSection />
       <ProcessSection />
       <MeaningGallery />
-      <MuehlsteinTeaser />
       <RegionSection />
       <FaqSection faq={page.faq} />
       <ContactBand />
@@ -137,6 +137,7 @@ function DecisionHubPage({ page }) {
           </div>
         </div>
       </section>
+      <SelectionGuide />
       <TrustStrip />
       <ContactBand />
     </>
@@ -162,6 +163,7 @@ function ChoiceDetailPage({ page }) {
           </div>
         </div>
       </section>
+      <SelectionGuide compact />
       <ContactBand />
     </>
   );
@@ -177,7 +179,19 @@ function DetailPage({ page }) {
 
 function DetailSeo({ page }) {
   if (!page.seoIntro?.length) return null;
-  return <section className="section detail-seo"><div className="container split"><div><p className="eyebrow">Region und Beratung</p><h2>{page.navTitle} in Neunkirchen-Seelscheid, Rhein-Sieg-Kreis und Köln</h2></div><div>{page.seoIntro.map((text) => <p key={text}>{text}</p>)}</div></div></section>;
+  const cards = [
+    ['Ort & Wirkung', 'Welche Stimmung soll der Stein, das Grabmal oder Steinobjekt am Ort auslösen?'],
+    ['Material & Oberfläche', 'Farbe, Struktur und Bearbeitung werden passend zum Anliegen ausgewählt.'],
+    ['Schrift & Symbol', 'Zeichen, Inschrift und Details geben dem Werk seine persönliche Aussage.'],
+  ];
+  return <section className="section detail-seo"><div className="container split"><div><p className="eyebrow">Region und Beratung</p><h2>{page.navTitle} in Neunkirchen-Seelscheid, Rhein-Sieg-Kreis und Köln</h2><div className="insight-grid">{cards.map(([title, text]) => <article key={title}><strong>{title}</strong><span>{text}</span></article>)}</div></div><div>{page.seoIntro.map((text) => <p key={text}>{text}</p>)}</div></div></section>;
+}
+
+function SelectionGuide({ compact = false }) {
+  const items = compact
+    ? [['1', 'Kategorie wählen', 'Der nächste Klick führt direkt zur passenden Unterseite.'], ['2', 'Möglichkeiten ansehen', 'Bilder, Materialien und Gestaltungsideen geben Orientierung.'], ['3', 'Beratung starten', 'Danach kann das Gespräch gezielt und trotzdem offen beginnen.']]
+    : [['1', 'Bereich wählen', 'Erinnerung und Grabmal oder Steinwerke für Haus, Garten und besondere Orte.'], ['2', 'Kategorie öffnen', 'Die Auswahl führt zu Gedenksteinen, Steinlichtern, Brunnen, Skulpturen und mehr.'], ['3', 'Persönlich klären', 'Im Gespräch wird aus der Richtung ein konkreter Entwurf.']];
+  return <section className={'section selection-guide' + (compact ? ' selection-guide--compact' : '')}><div className="container guide-grid">{items.map(([num, title, text]) => <article key={num}><span>{num}</span><strong>{title}</strong><p>{text}</p></article>)}</div></section>;
 }
 
 function GalleryPlaceholders({ gallery }) {
